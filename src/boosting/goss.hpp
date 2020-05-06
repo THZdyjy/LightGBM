@@ -89,7 +89,7 @@ class GOSS: public GBDT {
     ArrayArgs<score_t>::ArgMaxAtK(&tmp_gradients, 0, static_cast<int>(tmp_gradients.size()), top_k - 1);
     score_t threshold = tmp_gradients[top_k - 1];
 
-    score_t multiply = static_cast<score_t>(cnt - top_k) / other_k;
+    score_t multiply = std::max(kEpsilon, static_cast<score_t>(cnt - top_k) / other_k);
     data_size_t cur_left_cnt = 0;
     data_size_t cur_right_pos = cnt;
     data_size_t big_weight_cnt = 0;
