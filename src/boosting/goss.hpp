@@ -129,7 +129,7 @@ class GOSS: public GBDT {
     bag_data_cnt_ = num_data_;
     // not subsample for first iterations
     if (iter < static_cast<int>(1.0f / config_->learning_rate)) { return; }
-    GBDT::Bagging(iter);
+    Bagging(iter);
   }
 };
 
